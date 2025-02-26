@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+
+    <title>Rice Information - Smart Crop Advisor</title>
+    
+    <style>
+        body {
+            background-image: url("https://www.egypttoday.com/siteimages/Larg/16918.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Colonna MT', cursive;
+            color: rgb(15, 9, 9);
+            font-size: 20px;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu-options {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #343a40;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .menu-options a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+        }
+
+        .menu-options a:hover {
+            background-color: #495057;
+        }
+
+       .menu-btn {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 10px;   /* Align vertically */
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+
+        .info-container {
+    background: rgba(255, 255, 255, 0.5); /* Change the alpha value for more transparency */
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+
+        .info-container h1 {
+            margin-bottom: 30px;
+            color:black;
+        }
+
+        .info-container p {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">
+                
+                Smart Crop Advisor
+            </a>
+            
+            <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+            <div class="menu-options" id="menuOptions">
+                <a href="/">Home</a>
+                <a href="upload.html">Crop Recommendation</a>
+                <a href="pest.html">Fertilizer Suggestion</a>
+                <a href="Contact.html">Contact Us</a>
+            </div>
+        </nav>
+
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('menuOptions');
+                if (menu.style.display === 'flex') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'flex';
+                }
+            }
+        </script>
+    </header>
+
+    <section class="info-container">
+        <div class="container">
+            <h1 class="text-center">Rice Crop Information</h1>
+            <p class="text-center">Rice is one of the most important staple foods for a large part of the world's population, especially in Asia and Africa. Here are some key details about rice farming:</p>
+            
+            <div class="text-center">
+                <p><strong>Soil Type:</strong> Clayey soil with good water retention.</p>
+                <p><strong>Temperature Range:</strong> 20°C - 35°C (Optimum 25°C).</p>
+                <p><strong>Rainfall:</strong> Requires 100-200 cm of rainfall annually.</p>
+                <p><strong>Water Requirement:</strong> Rice fields must remain flooded for optimal growth.</p>
+                <p><strong>Planting Season:</strong> Usually planted during the monsoon season (June to November).</p>
+                <p><strong>Common Varieties:</strong> Basmati, Jasmine, Japonica, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy3jI6epz0tFf7Mk8hCk5R7Za4sX90q6nX3jIF6K" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9F6MAOe+7s+9f8qviT4C7E5g6vFhHNVJ7W6Z4qRiHq3Pj2G2F+M" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-7oP5oF7iLC1bGz0Uv0YmAAykDFAF5xYFgVfXU5c3C1lZ02kStg1y/9tTfbZwp5dP" crossorigin="anonymous"></script>
+</body>
+
+</html>

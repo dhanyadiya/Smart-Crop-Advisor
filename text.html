@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Right-Side Image Container</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      height: 100vh; /* Full viewport height */
+    }
+
+    .left-content {
+      width: 75%; /* Left side takes half the page */
+      background-color: #fff;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .left-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .left-content ul li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .right-container {
+      width: 25%; /* Right side takes half the page */
+      height: 100%; /* Full height of the viewport */
+      background-image: url('https://www.shutterstock.com/image-photo/drone-shot-tractor-spraying-lush-600nw-2464594961.jpg'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="left-content">
+    <h1>Heading Title</h1>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+      <li>List item 4</li>
+    </ul>
+  </div>
+  <div class="right-container"></div>
+</body>
+</html>

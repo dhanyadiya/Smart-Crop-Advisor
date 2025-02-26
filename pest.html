@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fertilizer Advice Form</title>
+  <style>
+   body {
+            background-image: url("https://images.pexels.com/photos/1198507/pexels-photo-1198507.jpeg?cs=srgb&dl=pexels-grizzlybear-1198507.jpg&fm=jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Colonna MT', cursive;
+            color:black;
+            font-size: 20px;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu-options {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #343a40;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .menu-options a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+            font-family: 'Colonna MT', cursive;
+        }
+
+        .menu-options a:hover {
+            background-color: #495057;
+        }
+
+       .menu-btn {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 10px;   /* Align vertically */
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: black;
+      font-size: 2rem;
+      font-family: 'Colonna MT', cursive;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 30px auto;
+      color: black;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      font-family: 'Colonna MT', cursive;
+      transition: all 0.3s ease;
+    }
+
+    .form-container:hover {
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #3b8f6b;
+      box-shadow: 0 0 8px rgba(59, 143, 107, 0.5);
+    }
+
+    button {
+      color: white;
+      font-weight: bold;
+      width: 130px;
+      height: 50px;
+      border-radius: 12px;
+      font-size: 21px;
+      background-color: #3b8f6b;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      animation: bounce 2s infinite;
+    }
+
+    button:hover {
+     
+      transform: scale(1.05);
+    }
+
+    
+
+    option {
+      font-weight: normal;
+    }
+
+
+
+    
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #3b8f6b;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    
+
+    @keyframes pulse {
+      from {
+        box-shadow: 0 0 10px rgba(59, 143, 107, 0.5);
+      }
+      to {
+        box-shadow: 0 0 20px rgba(59, 143, 107, 0.8);
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+       
+        Smart Crop Advisor
+    </a>
+        <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+        <div class="menu-options" id="menuOptions">
+            <a href="/">Home</a>
+            <a href="upload.html">Crop Recommendation</a>
+            <a href="pest.html">Fertilizer Suggestion</a>
+            <a href="Contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuOptions');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
+</header>
+<h1></h1>
+  <h2><b>Fertilizer Suggestion</b></h2>
+
+  <div class="form-container">
+    <form method="POST" action="{{ url_for('fert_recommend') }}">
+      <div class="form-group">
+        <label for="Nitrogen">Nitrogen</label>
+        <input type="number" id="Nitrogen" name="nitrogen" placeholder="Enter the value (example:50)" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="Phosphorous">Phosphorous</label>
+        <input type="number" id="Phosphorous" name="phosphorous" placeholder="Enter the value (example:50)" required />
+      </div>
+
+      <div class="form-group">
+        <label for="Pottasium">Pottasium</label>
+        <input type="number" id="Pottasium" name="pottasium" placeholder="Enter the value (example:50)" required />
+      </div>
+
+      <div class="form-group">
+        <label for="crop">Crop you want to grow</label>
+        <select name="cropname" id="crop" required>
+          <option selected>Select crop</option>
+          <option>rice</option>
+          <option>maize</option>
+          <option>chickpea</option>
+          <option>kidneybeans</option>
+          <option>pigeonpeas</option>
+          <option>mothbeans</option>
+          <option>mungbean</option>
+          <option>blackgram</option>
+          <option>lentil</option>
+          <option>pomegranate</option>
+          <option>banana</option>
+          <option>mango</option>
+          <option>grapes</option>
+          <option>watermelon</option>
+          <option>muskmelon</option>
+          <option>apple</option>
+          <option>orange</option>
+          <option>papaya</option>
+          <option>coconut</option>
+          <option>cotton</option>
+          <option>jute</option>
+          <option>coffee</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit">Predict</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

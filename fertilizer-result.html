@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Recommendation</title>
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Colonna MT', cursive;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            font-size: 20px;
+        }
+        .main-container {
+            display: flex;
+            flex: 1; /* Allow container to stretch */
+            width: 100%;
+        }
+        .right-container {
+            width: 25%; /* Right side takes 25% */
+            height: 100%; /* Full height of the viewport */
+            background-image: url('https://e1.pxfuel.com/desktop-wallpaper/20/232/desktop-wallpaper-greenery-mobile-greenery-thumbnail.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            
+
+        }
+        h1 {
+    font-size: 2.5rem; /* Increase the font size for better visibility */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center align the text */
+    color: #001233; /* Dark color for better contrast */
+    margin-bottom: 20px; /* Add some space below the heading */
+    padding: 10px; /* Add padding around the heading */
+    border-bottom: 2px solid #3498db; /* Decorative border under the heading */
+    font-family: 'Colonna MT', cursive;
+    
+}
+.left-content {
+            width: 75%; /* Left side takes 75% */
+            padding: 2rem;
+            background: linear-gradient(45deg, #c8b6ff, #679436); /* Double color gradient */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-content">
+            <h1>Fertilizer Suggesstion</h1>
+                    <p>{{ recommendation }}</p>
+                </div>
+                <div class="right-container">
+            </div>
+        </div>
+</body>
+</html>

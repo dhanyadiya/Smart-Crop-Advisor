@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+
+    <title>Upload - Smart Crop Advisor</title>
+    <style>
+       body {
+            background-image: url("https://images.pexels.com/photos/1198507/pexels-photo-1198507.jpeg?cs=srgb&dl=pexels-grizzlybear-1198507.jpg&fm=jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Colonna MT', cursive;
+            color: rgb(15, 9, 9);
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu-options {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #343a40;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .menu-options a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+        }
+
+        .menu-options a:hover {
+            background-color: #495057;
+        }
+
+        .menu-btn {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 10px;   /* Align vertically */
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+        .carousel-inner img {
+            height: 70vh;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            width: 60%;
+            text-align: center;
+            margin: auto;
+            animation: fadeIn 1s ease-in-out;
+            font-size: 20px;
+        }
+
+        .details h1 {
+            margin-top: 100px;
+            color:black;
+            font-size: 3rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .upload {
+            font-size: 20px;
+            background-color: rgb(255, 252, 252);
+            border-radius: 20px;
+            outline: none;
+            width: 315px;
+            color: rgb(0, 0, 0);
+            border: 3px solid rgb(45, 47, 49);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .upload:hover {
+            background-color: rgb(240, 240, 240);
+            border-color: rgb(31, 185, 190);
+        }
+
+        ::-webkit-file-upload-button {
+            color: white;
+            padding: 10px;
+            border: 2px solid rgb(129, 129, 129);
+            background-color: rgb(129, 129, 129);
+            border-radius: 15px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        ::-webkit-file-upload-button:hover {
+            border-radius: 20px;
+            border: 2px solid rgb(177, 174, 174);
+            background-color: rgb(177, 174, 174);
+        }
+
+        input[type="submit"] {
+            padding: 10px 25px;
+            background-color: white;
+            border-radius: 15px;
+            color: black;
+            font-size: 1.2rem;
+            border: 2px solid rgb(31, 185, 190);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(31, 185, 190);
+            color: white;
+            border-color: rgb(31, 185, 190);
+        }
+
+        .carousel-caption {
+            background: rgba(24, 25, 26, 0.5);
+            border-radius: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-caption p {
+            font-family: 'Rowdies', cursive;
+            color: yellow;
+        }
+
+        .img-thumbnail {
+            height: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .img-thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .Content-h5 {
+            padding: 15px;
+            background-color: black;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .Content-h5:hover {
+            background-color: rgb(45, 47, 49);
+        }
+
+        .img-preview {
+            width: 400px;
+            height: 356px;
+            position: relative;
+            border: 5px solid #F8F8F8;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+            margin-top: 1em;
+            margin-bottom: 1em;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .img-preview:hover {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .img-preview>div {
+            width: 100%;
+            height: 100%;
+            background-size: 400px 356px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media only screen and (max-width: 325px) {
+            body {
+                font-size: x-small;
+            }
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">
+                
+                Smart Crop Advisor
+            </a>
+            <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+            <div class="menu-options" id="menuOptions">
+                <a href="/">Home</a>
+                <a href="upload.html">Crop Recommendation</a>
+                <a href="pest.html">Fertilizer Suggestion</a>
+                <a href="Contact.html">Contact Us</a>
+            </div>
+        </nav>
+
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('menuOptions');
+                if (menu.style.display === 'flex') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'flex';
+                }
+            }
+        </script>
+    </header>
+
+    <main>
+        <section>
+            <div class="container-fluid details">
+                <h1 class="text-center mt-5">Smart Crop Advisor</h1>
+                <!-- Form for uploading soil image and selecting area -->
+                <form id="predict" action="/predict" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="image_path">Upload Soil Image:</label>
+                        <input type="file" id="image_path" name="image_path" class="form-control-file upload" accept="image/*" required>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="districtSelect">Select District:</label>
+                        <select id="districtSelect" name="districtSelect" class="form-control" required onchange="updateCities()">
+                            <option value="">Select a district</option>
+                        <option value="District1">Bangalore</option>
+                        <option value="District2">Raichur</option>
+                        <option value="District3">Tumakuru</option>
+                        <option value="District4">Udapi</option>
+                        <option value="District5">Kolar</option>
+                        <option value="District6">Koppal</option>
+                        <option value="District7">Mandya</option>
+                        <option value="District8">Mysuru</option>
+                        <option value="District9">Vijayanagara</option>
+                        <option value="District10">Ballari</option>
+                        <option value="District11">Bidar</option>
+                        <option value="District12">Chamarajanagara</option>
+                        <option value="District13">Chikkaballapur</option>
+                        <option value="District14">Chikkamagaluru</option>
+                        <option value="District15">Uttarakannada</option>
+                        <option value="District16">Shivamogga</option>
+                        <option value="District17">Kalaburagi </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="city">Select City:</label>
+                        <select id="city" name="city" class="form-control" required>
+                            <option value="">Select a city</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Predict" class="btn btn-primary">
+                    </div>
+                </form>
+                <h2 id="result" class="text-center mt-4"></h2>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy3jI6epz0tFf7Mk8hCk5R7Za4sX90q6nX3jIF6K" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9F6MAOe+7s+9f8qviT4C7E5g6vFhHNVJ7W6Z4qRiHq3Pj2G2F+M" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-7oP5oF7iLC1bGz0Uv0YmAAykDFAF5xYFgVfXU5c3C1lZ02kStg1y/9tTfbZwp5dP" crossorigin="anonymous"></script>
+
+    <script>
+        function updateCities() {
+            const districtSelect = document.getElementById('districtSelect');
+            const citySelect = document.getElementById('city');
+            const selectedDistrict = districtSelect.value;
+
+            // Clear existing options
+            citySelect.innerHTML = '<option value="">Select a city</option>';
+
+            // Define cities based on the selected district
+            const districtCities = {
+                'District1': ['Channapatna','Kanakapura','Magadi','Ramanagara'],
+                'District2': ['Devadurga','Lingsugur','Manvi','Sindhanur'],
+                'District3': ['Tumakuru','Turuvekere','Chikkanayakanahalli','Gubbi','Koratagere','Kunigal','Madhugiri','Pavagada','Sira','Tiptur'],
+                'District4': ['Udupi','Brahmavar','Byndoor','Hebri','Karkala','Kaup','Kundapura'],
+                'District5': ['Srinivaspur'],
+                'District6': ['Koppal','Gangavathi','Kushtagi','Yelburga'],
+                'District7': [',Mandya','Krishnarajpet','Maddur','Malavalli','Nagamangala','Pandavapura','Srirangapatna'],
+                'District8': ['Mysuru','H.D. Kote','Hunsur','Krishnarajanagara','Nanjangud','Periyapatna','T. Narasipura'],
+                'District9': ['Hadagali','Hagaribommanahalli','Hospet','Kudligi'],
+                'District10': ['Sandur','Siruguppa'],
+                'District11': ['Bidar','Aurad','Basavakalyan','Bhalki','Humnabad'],
+                'District12': ['Chamarajanagara','Gundlupet','Kollegal','Yelandur'],
+                'District13': ['Chikkaballapur','Bagepalli','Chintamani','Gauribidanur','Gudibanda','Sidlaghatta'],
+                'District14': ['Chikkamagaluru','Kadur','Koppa','Mudigere','N.R Pura'],
+                'District15': ['Ankola','Bhatkal','Dandeli','Haliyal','Honnavar','Joida','Karwar','Kumta','Mundgod','Siddapur','Sirsi','Supa'],
+                'District16': ['Bhadravathi', 'Hosanagara', 'Sagar', 'Shikaripur', 'Shivamogga', 'Soraba','Thirthahalli','Bhadravati'],
+                'District17': ['Kalaburagi','Aland', 'Jewargi', 'Afzalpur'],
+            };
+
+            const cities = districtCities[selectedDistrict] || [];
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.text = city;
+                citySelect.appendChild(option);
+            });
+        }
+    </script>
+</body>
+</html>
